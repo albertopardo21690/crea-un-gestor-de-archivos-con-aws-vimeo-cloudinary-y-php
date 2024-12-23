@@ -1,62 +1,51 @@
-<?php
+<?php 
 
-class AdminsController {
+class AdminsController{
 
 	/*=============================================
-	Login de administradores
-	=============================================*/
+	Login de adminstradores
+	=============================================*/	
 
-	public function login() {
+	public function login(){
 
-		if(isset($_POST["email_admin"]) && $_POST["password_admin"]) {
+		if(isset($_POST["email_admin"]) && isset($_POST["password_admin"])){
 
 			echo '<script>
-			
-				fncMatPreloader("on");
-				fncSweetAlert("loading", "Cargando...", "");
-			
+
+			fncMatPreloader("on");
+			fncSweetAlert("loading", "loading...", "");
+
 			</script>';
 
 			$url = "admins?login=true&suffix=admin";
 			$method = "POST";
 			$fields = array(
 				"email_admin" => $_POST["email_admin"],
-				"password_admin" => $_POST["password_admin"],
+				"password_admin" => $_POST["password_admin"]
 			);
 
-			$login = CurlController::request($url, $method, $fields);
+			$login = CurlController::request($url,$method,$fields);
 			
-			if($login->status == 200) {
+			if($login->status == 200){
 
-				$_SESSION['admin'] = $login->results[0];
+				$_SESSION["admin"] = $login->results[0];
 
 				echo '<script>
 
-					localStorage.setItem("token_admin", "'.$login->results[0]->token_admin.'");
-					window.location = "/";
+				localStorage.setItem("token-admin","'.$login->results[0]->token_admin.'");
+				window.location = "/";
 
 				</script>';
-
-			} else {
-
-				if($login->results == "Wrong email") {
-
-					$error = "El correo esta mal escrito.";
-
-				} else {
-
-					$error = "La contraseña esta mal escrita.";
-
-				}
+			
+			}else{
 
 				echo '<script>
 
 					fncFormatInputs();
 					fncMatPreloader("off");
-					fncToastr("error", "'.$error.'");
+					fncToastr("error", "'.$login->results.'");
 
 				</script>';
-
 			}
 
 		}
@@ -65,4 +54,4 @@ class AdminsController {
 
 }
 
-?>
+

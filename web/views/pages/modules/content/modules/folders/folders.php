@@ -1,3 +1,23 @@
+<?php
+
+$url = "folders";
+$method = "GET";
+$fields = array();
+
+$folders = CurlController::request($url, $method, $fields);
+
+if($folders->status == 200) {
+
+    $folders = $folders->results;
+
+} else {
+
+    $folders = array();
+
+}
+
+?>
+
 <!--=============================================
 FOLDERS
 ===============================================-->
@@ -6,55 +26,39 @@ FOLDERS
 
     <div class="row">
 
-        <div class="col">
+        <?php if(!empty($folders)) : ?>
+
+            <?php foreach( $folders as $key => $value ) : ?>
+
+                <div class="col">
             
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked>
-                <label class="form-check-label ps-1 align-middle">Server</label>
-            </div>
+                    <div class="form-check">
+                        <input class="form-check-input check-fms" type="checkbox" id="check_<?php echo $key; ?>" name="folders" value="<?php echo $value->id_folder; ?>_<?php echo $value->name_folder; ?>" checked>
+                        <label class="form-check-label ps-1 align-middle"><?php echo $value->name_folder; ?></label>
+                    </div>
 
-            <div class="progress mt-1" style="height:10px">
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" style="width:90%">90%</div>
-            </div>
+                    <?php
+                    
+                        $percent = $value->total_folder * 100 / $value->size_folder;
+                        $percent = number_format($percent, 3);
+                        
+                    ?>
 
-        </div>
+                    <div class="progress mt-1" style="height:10px">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated 
+                        <?php if($percent < 50) : ?>bg-success<?php endif; ?>
+                        <?php if($percent >= 50 && $percent < 75) : ?>bg-primary<?php endif; ?>
+                        <?php if($percent >= 75 && $percent < 85) : ?>bg-warning<?php endif; ?>
+                        <?php if($percent >= 85) : ?>bg-danger<?php endif; ?>" 
+                        style="width:<?php echo $percent; ?>%"><?php echo $percent; ?>%</div>
+                    </div>
 
-        <div class="col">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked>
-                <label class="form-check-label ps-1 align-middle">AWS S3</label>
-            </div>
-            <div class="progress mt-1" style="height:10px">
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width:20%">20%</div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked>
-                <label class="form-check-label ps-1 align-middle">Cloudinary</label>
-            </div>
-            <div class="progress mt-1" style="height:10px">
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" style="width:60%">60%</div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked>
-                <label class="form-check-label ps-1 align-middle">Vimeo</label>
-            </div>
-            <div class="progress mt-1" style="height:10px">
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" style="width:80%">80%</div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked>
-                <label class="form-check-label ps-1 align-middle">Mailchimp</label>
-            </div>
-            <div class="progress mt-1" style="height:10px">
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" style="width:90%">90%</div>
-            </div>
-        </div>
+                </div>
+
+            <?php endforeach; ?>
+
+        <?php endif; ?>
+
     </div>
     
 </div>
