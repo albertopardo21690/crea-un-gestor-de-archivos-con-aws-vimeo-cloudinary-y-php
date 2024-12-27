@@ -1,0 +1,412 @@
+{
+	"info": {
+		"_postman_id": "b2a7f5ea-46f9-471d-b46e-04d87022e884",
+		"name": "API FMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11446859"
+	},
+	"item": [
+		{
+			"name": "POST REGISTER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "sdgasdfSDGSDGsdg345123dfhdfhSDGSDGasdfa45",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email_admin",
+							"value": "admin@fms.com",
+							"type": "text"
+						},
+						{
+							"key": "password_admin",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "date_created_admin",
+							"value": "2024-08-13",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://api-fms.com/admins?register=true&suffix=admin",
+					"protocol": "http",
+					"host": [
+						"api-fms",
+						"com"
+					],
+					"path": [
+						"admins"
+					],
+					"query": [
+						{
+							"key": "register",
+							"value": "true"
+						},
+						{
+							"key": "suffix",
+							"value": "admin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "sdgasdfSDGSDGsdg345123dfhdfhSDGSDGasdfa45",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email_admin",
+							"value": "admin@fms.com",
+							"type": "text"
+						},
+						{
+							"key": "password_admin",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "date_created_admin",
+							"value": "2024-08-13",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://api-fms.com/admins?register=true&suffix=admin",
+					"protocol": "http",
+					"host": [
+						"api-fms",
+						"com"
+					],
+					"path": [
+						"admins"
+					],
+					"query": [
+						{
+							"key": "register",
+							"value": "true"
+						},
+						{
+							"key": "suffix",
+							"value": "admin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET BASIC SELECTION",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{apikey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{endpoint}}folders",
+					"host": [
+						"{{endpoint}}folders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET FILTER SELECTION",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{apikey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{endpoint}}folders?linkTo=id_folder&equalTo=1",
+					"host": [
+						"{{endpoint}}folders"
+					],
+					"query": [
+						{
+							"key": "linkTo",
+							"value": "id_folder"
+						},
+						{
+							"key": "equalTo",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST SAVE ",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{apikey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id_folder_file",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "name_file",
+							"value": "music",
+							"type": "text"
+						},
+						{
+							"key": "extension_file",
+							"value": "jpg",
+							"type": "text"
+						},
+						{
+							"key": "type_file",
+							"value": "image/jpeg",
+							"type": "text"
+						},
+						{
+							"key": "size_file\t",
+							"value": "1000000",
+							"type": "text"
+						},
+						{
+							"key": "link_file",
+							"value": "http://fms.com/views/assets/files/12412421242.jpg",
+							"type": "text"
+						},
+						{
+							"key": "date_created_file",
+							"value": "2024-08-14",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{endpoint}}files?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjM2NjEzMjksImV4cCI6MTcyMzc0NzcyOSwiZGF0YSI6eyJpZCI6IjEiLCJlbWFpbCI6ImFkbWluQGZtcy5jb20ifX0.PEnPuyllEMynGNi5uK10jCcYIdgLKd_aMZsGaibiXAs&table=admins&suffix=admin",
+					"host": [
+						"{{endpoint}}files"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjM2NjEzMjksImV4cCI6MTcyMzc0NzcyOSwiZGF0YSI6eyJpZCI6IjEiLCJlbWFpbCI6ImFkbWluQGZtcy5jb20ifX0.PEnPuyllEMynGNi5uK10jCcYIdgLKd_aMZsGaibiXAs"
+						},
+						{
+							"key": "table",
+							"value": "admins"
+						},
+						{
+							"key": "suffix",
+							"value": "admin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT UPDATE",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{apikey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "size_folder",
+							"value": "5432567",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{endpoint}}folders?id=1&nameId=id_folder&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjM2NjEzMjksImV4cCI6MTcyMzc0NzcyOSwiZGF0YSI6eyJpZCI6IjEiLCJlbWFpbCI6ImFkbWluQGZtcy5jb20ifX0.PEnPuyllEMynGNi5uK10jCcYIdgLKd_aMZsGaibiXAs&table=admins&suffix=admin",
+					"host": [
+						"{{endpoint}}folders"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "nameId",
+							"value": "id_folder"
+						},
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjM2NjEzMjksImV4cCI6MTcyMzc0NzcyOSwiZGF0YSI6eyJpZCI6IjEiLCJlbWFpbCI6ImFkbWluQGZtcy5jb20ifX0.PEnPuyllEMynGNi5uK10jCcYIdgLKd_aMZsGaibiXAs"
+						},
+						{
+							"key": "table",
+							"value": "admins"
+						},
+						{
+							"key": "suffix",
+							"value": "admin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE ITEM",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}folders?id=1&nameId=id_folder&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjM2NjEzMjksImV4cCI6MTcyMzc0NzcyOSwiZGF0YSI6eyJpZCI6IjEiLCJlbWFpbCI6ImFkbWluQGZtcy5jb20ifX0.PEnPuyllEMynGNi5uK10jCcYIdgLKd_aMZsGaibiXAs&table=admins&suffix=admin",
+					"host": [
+						"{{endpoint}}folders"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "nameId",
+							"value": "id_folder"
+						},
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MjM2NjEzMjksImV4cCI6MTcyMzc0NzcyOSwiZGF0YSI6eyJpZCI6IjEiLCJlbWFpbCI6ImFkbWluQGZtcy5jb20ifX0.PEnPuyllEMynGNi5uK10jCcYIdgLKd_aMZsGaibiXAs"
+						},
+						{
+							"key": "table",
+							"value": "admins"
+						},
+						{
+							"key": "suffix",
+							"value": "admin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET RELATIONS",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{apikey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{endpoint}}relations?rel=files,folders&type=file,folder&select=name_file,name_folder&linkTo=id_file&equalTo=1",
+					"host": [
+						"{{endpoint}}relations"
+					],
+					"query": [
+						{
+							"key": "rel",
+							"value": "files,folders"
+						},
+						{
+							"key": "type",
+							"value": "file,folder"
+						},
+						{
+							"key": "select",
+							"value": "name_file,name_folder"
+						},
+						{
+							"key": "linkTo",
+							"value": "id_file"
+						},
+						{
+							"key": "equalTo",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SEARCH",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{apikey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{endpoint}}relations?rel=files,folders&type=file,folder&linkTo=name_file&search=bosque",
+					"host": [
+						"{{endpoint}}relations"
+					],
+					"query": [
+						{
+							"key": "rel",
+							"value": "files,folders"
+						},
+						{
+							"key": "type",
+							"value": "file,folder"
+						},
+						{
+							"key": "linkTo",
+							"value": "name_file"
+						},
+						{
+							"key": "search",
+							"value": "bosque"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

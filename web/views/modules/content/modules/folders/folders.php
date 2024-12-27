@@ -24,7 +24,7 @@ FOLDERS
 
 <div class="col-12 col-lg-7 mt-3">
 
-		<div class="row">
+		<div class="row listFolders">
 
 			<?php if (!empty($folders)): ?>
 
@@ -33,7 +33,7 @@ FOLDERS
 					<div class="col">
 
 						<div class="form-check">
-							<input class="form-check-input check-fms" type="checkbox" id="check_<?php echo $key ?>" name="folders" value="<?php echo $value->id_folder ?>_<?php echo $value->name_folder ?>" checked>
+							<input class="form-check-input check-fms changeFilters" type="checkbox" id="check_<?php echo $key ?>" name="folders" value="<?php echo $value->id_folder ?>_<?php echo $value->name_folder ?>" checked>
 							<label class="form-check-label ps-1 align-middle"><?php echo $value->name_folder ?></label>
 						</div>
 

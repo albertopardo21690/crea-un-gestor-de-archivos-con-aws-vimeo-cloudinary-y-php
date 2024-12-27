@@ -1,6 +1,6 @@
 <?php 
 
-$url = "relations?rel=files,folders&type=file,folder";
+$url = "relations?rel=files,folders&type=file,folder&orderBy=id_file&orderMode=DESC&startAt=0&endAt=10";
 $method = "GET";
 $fields = array();
 
@@ -10,9 +10,17 @@ if($files->status == 200){
 
 	$files = $files->results;
 
+	/*=============================================
+	Traer el total de archivos existentes en BD
+	=============================================*/
+
+	$url = "files?select=id_file";
+	$totalFiles = ceil(CurlController::request($url,$method,$fields)->total/10);
+
 }else{
 
 	$files = array();
+	$totalFiles = 0;
 }
 
 ?>
@@ -63,6 +71,11 @@ CONTENT
 		include "modules/grid/grid.php";
 
 		?>
+
+		<div id="scrollControl" class="py-1"></div>
+
+		<input type="hidden" id="totalPages" value="<?php echo $totalFiles ?>">
+		<input type="hidden" id="currentPage" value="1">
 
 	</div>
 </div>
